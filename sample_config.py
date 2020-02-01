@@ -27,4 +27,6 @@ random_style_function = lambda: "width: " + width_function() + "; padding-left: 
 """ Style function for boring mode (whenever ?boring=1 is added to URLs) """
 boring_style_function = lambda : "max-width: 90%; max-height: 100%;"
 
+""" Extensions that will be displayed on the site """
+allowed_extensions = ["jpg", "png", "JPG"]
 
