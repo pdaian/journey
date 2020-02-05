@@ -82,7 +82,7 @@ a:active {
 }
 
 #photos {
-{% if config.boring_mode %}
+{% if config.order_mode %}
 width: 100%;
 { % else %}
 width: 110%;
@@ -131,14 +131,14 @@ margin:0;
 
 {% endif %}
 {% endif %}
-{% if boring_mode %}
-<div style="padding: 2em; margin-top: 2em; width: 100%; background-color: white; text-color: red;">Boring mode enabled; photos are displaying in-order and without random sizes/offsets.  <b>Disable</b></div>
+{% if order_mode %}
+<div style="padding: 2em; margin-top: 2em; width: 100%; background-color: white; text-color: red;">Order mode enabled; photos are displaying in-order and without random sizes/offsets.  <b>Disable</b></div>
 
 {% endif %}
 
 <section id="photos" style="margin-top: 2em; width: 100%;">
 {% for file in files %}
-<div class="photo" style="display: inline-grid; {% if not boring_mode %} {{ config.random_style_function() }} {% else %} {{ config.boring_style_function() }} {% endif %}">
+<div class="photo" style="display: inline-grid; {% if not order_mode %} {{ config.random_style_function() }} {% else %} {{ config.order_style_function() }} {% endif %}">
 <a href="/static/{{file|replace('.th.', '.')}}"><img class="lozad" data-src="/static/{{file}}" style="image-orientation: from-image; object-fit: contain; width: 100%;" loading="lazy"></a>
 </div>
 {% endfor %}
