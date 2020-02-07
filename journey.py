@@ -33,21 +33,18 @@ def view(collection):
     if not collection in processedcollections:
         return 'No such collection.'
 
-    files = []
-    for path in processedcollections[collection]:
-        try:
-            for file in sorted(os.listdir(os.path.join('pics', path))):
-                files.append(os.path.join('pics', path, file))
-        except:
-            print("ERROR! FAILED TO PROCESS %s!" % (path))
+    files = copy.deepcopy(processedcollections[collection])
     if not order_mode:
         random.shuffle(files)
 
     # process swiggle thumbnails, remove banned files
-    for file in copy.deepcopy(files):
+    for file in files:
         if ".th." in file or not file.split(".")[-1] in config.allowed_extensions:
-            #files.remove(file.replace(".th.", "."))
-            files.remove(file)
+            try:
+                files.remove(file.replace(".th.", "."))
+            except:
+                pass
+            #files.remove(file)
 
     randtext = random.choice(open('texts.txt').read().splitlines()).split('||')
 

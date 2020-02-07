@@ -30,3 +30,10 @@ boring_style_function = lambda : "max-width: 90%; max-height: 100%;"
 """ Extensions that will be displayed on the site """
 allowed_extensions = ["jpg", "png", "JPG"]
 
+sort_by_filename = lambda y : y.split('/')[-1]
+custom_sorts = {'hiking': sort_by_filename}
+
+
+
+
+
